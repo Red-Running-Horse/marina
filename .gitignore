@@ -46,6 +46,11 @@ yarn-error.log*
 tmp
 runtaxi.sh
 
+# FindYourMythos generated reports
+FindYourMythos/findyourmythos_report_*.txt
+FindYourMythos/*.txt
+!FindYourMythos/*.md
+
 /taxid
 
 # playwright

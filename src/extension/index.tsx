@@ -1,5 +1,6 @@
 import * as Sentry from '@sentry/browser';
 import { createRoot } from 'react-dom/client';
+import { ErrorBoundary } from './components/error-boundary';
 import App from './app';
 
 import './styles/index.css';
@@ -13,4 +14,8 @@ if (process.env.NODE_ENV === 'production') {
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
-root.render(<App />);
+root.render(
+  <ErrorBoundary>
+    <App />
+  </ErrorBoundary>
+);
