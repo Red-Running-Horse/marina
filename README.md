@@ -4,6 +4,12 @@ Liquid Network browser extension
 
 ![mockup_marina-p-2000 2825524f](https://user-images.githubusercontent.com/3596602/163511145-3085879d-486c-42d1-880a-1f8ba3f98803.png)
 
+## 📚 Documentation
+
+- [Architecture Guide](./ARCHITECTURE.md) - Learn about Marina's clean architecture, design patterns, and code organization
+- [Contributing Guide](./CONTRIBUTING.md) - How to contribute to Marina with code style guidelines and best practices
+- [Official Docs](https://docs.vulpem.com/marina/introduction) - User documentation and API reference
+
 
 
 ## ⬇️ Install
