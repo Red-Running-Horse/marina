@@ -1,6 +1,6 @@
 /**
  * Centralized logging infrastructure for Marina wallet
- * 
+ *
  * Provides structured logging with appropriate log levels and
  * integration with error tracking services like Sentry.
  */
@@ -47,7 +47,7 @@ class Logger {
    */
   warn(message: string, context?: LogContext): void {
     console.warn(`[Marina Warning] ${message}`, context || '');
-    
+
     // Log warnings to Sentry with low severity
     if (!this.isDevelopment) {
       Sentry.captureMessage(message, {
@@ -63,7 +63,7 @@ class Logger {
    */
   error(message: string, error?: Error, context?: LogContext): void {
     console.error(`[Marina Error] ${message}`, error || '', context || '');
-    
+
     // Always report errors to Sentry in production
     if (!this.isDevelopment && error) {
       Sentry.captureException(error, {
@@ -80,7 +80,7 @@ class Logger {
     if (this.isDevelopment) {
       console.debug(`[Marina Performance] ${operation}: ${durationMs}ms`, context || '');
     }
-    
+
     // Report slow operations to Sentry
     if (durationMs > 1000 && !this.isDevelopment) {
       Sentry.captureMessage(`Slow operation: ${operation}`, {

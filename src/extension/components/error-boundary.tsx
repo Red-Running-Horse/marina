@@ -1,11 +1,12 @@
 /**
  * Error Boundary component for graceful error handling in React
- * 
+ *
  * Catches JavaScript errors anywhere in the component tree and displays
  * a fallback UI instead of crashing the entire application.
  */
 
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React, { Component } from 'react';
+import type { ErrorInfo, ReactNode } from 'react';
 import { logger } from '../../infrastructure/logger';
 
 interface Props {
@@ -70,18 +71,17 @@ export class ErrorBoundary extends Component<Props, State> {
 
       // Default fallback UI
       return (
-        <div className="flex min-h-screen items-center justify-center bg-primary p-8">
-          <div className="max-w-md rounded-lg bg-white p-6 shadow-lg">
-            <h1 className="mb-4 text-2xl font-bold text-red-600">
-              Something went wrong
-            </h1>
+        <div className="bg-primary flex items-center justify-center min-h-screen p-8">
+          <div className="max-w-md p-6 bg-white rounded-lg shadow-lg">
+            <h1 className="mb-4 text-2xl font-bold text-red-600">Something went wrong</h1>
             <p className="mb-4 text-gray-700">
-              An unexpected error occurred in the Marina wallet. Please try again or contact support if the problem persists.
+              An unexpected error occurred in the Marina wallet. Please try again or contact support
+              if the problem persists.
             </p>
-            
+
             {process.env.NODE_ENV === 'development' && this.state.error && (
-              <details className="mb-4 rounded bg-gray-100 p-4">
-                <summary className="cursor-pointer font-semibold">
+              <details className="p-4 mb-4 bg-gray-100 rounded">
+                <summary className="font-semibold cursor-pointer">
                   Error details (development only)
                 </summary>
                 <pre className="mt-2 overflow-auto text-xs text-red-600">
@@ -94,13 +94,13 @@ export class ErrorBoundary extends Component<Props, State> {
             <div className="flex gap-2">
               <button
                 onClick={this.handleReset}
-                className="rounded bg-primary px-4 py-2 text-white hover:bg-primary-dark"
+                className="bg-primary hover:bg-primary-dark px-4 py-2 text-white rounded"
               >
                 Try Again
               </button>
               <button
                 onClick={() => window.location.reload()}
-                className="rounded border border-gray-300 px-4 py-2 hover:bg-gray-100"
+                className="hover:bg-gray-100 px-4 py-2 border border-gray-300 rounded"
               >
                 Reload Extension
               </button>
